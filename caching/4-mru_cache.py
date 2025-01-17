@@ -4,7 +4,7 @@
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """ lru cache """
 
     def put(self, key, item):
@@ -14,7 +14,7 @@ class LRUCache(BaseCaching):
         if (key not in self.cache_data and
                 len(self.cache_data) >= BaseCaching.MAX_ITEMS):
             if self.cache_data:
-                discard = next(iter(self.cache_data))
+                discard = next(reversed(list(self.cache_data)))
                 print("DISCARD: {}".format(discard))
                 del self.cache_data[discard]
         if key in self.cache_data:
