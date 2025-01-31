@@ -93,4 +93,3 @@ class Auth:
         except NoResultFound:
             raise ValueError
         return None
-    
